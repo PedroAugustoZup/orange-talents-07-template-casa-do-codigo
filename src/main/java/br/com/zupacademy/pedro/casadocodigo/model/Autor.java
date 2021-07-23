@@ -1,5 +1,6 @@
 package br.com.zupacademy.pedro.casadocodigo.model;
 
+import br.com.zupacademy.pedro.casadocodigo.config.validator.EmailUnico;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Autor {
     private String nome;
     @NotNull
     @Email
+    @EmailUnico
     private String email;
     @NotNull
     @NotBlank
