@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class AutorDTORequest {
     @NotNull
@@ -18,7 +19,7 @@ public class AutorDTORequest {
     private String email;
     @NotNull
     @NotBlank
-    @Length(max = 400)
+    @Size(max = 400)
     private String descricao;
 
     public String getNome() {

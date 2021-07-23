@@ -51,4 +51,15 @@ public class Autor {
     public LocalDateTime getMomentoCriacao() {
         return momentoCriacao;
     }
+
+    @Override
+    public String toString() {
+        return "Autor{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", momentoCriacao=" + momentoCriacao +
+                '}';
+    }
 }
