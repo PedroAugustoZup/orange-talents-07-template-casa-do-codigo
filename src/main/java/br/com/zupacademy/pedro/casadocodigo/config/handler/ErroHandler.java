@@ -37,4 +37,9 @@ public class ErroHandler {
 
         return dto;
     }
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String handle(IllegalArgumentException exception){
+        return exception.getMessage();
+    }
 }

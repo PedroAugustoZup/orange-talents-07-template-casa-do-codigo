@@ -40,4 +40,8 @@ public class Estado {
     public Pais getPais() {
         return pais;
     }
+
+    public boolean isValid(Pais paisFind) {
+        return this.pais.equals(paisFind);
+    }
 }
