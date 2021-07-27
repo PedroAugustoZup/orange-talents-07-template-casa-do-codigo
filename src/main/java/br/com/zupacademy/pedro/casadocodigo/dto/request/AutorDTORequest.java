@@ -1,6 +1,6 @@
 package br.com.zupacademy.pedro.casadocodigo.dto.request;
 
-import br.com.zupacademy.pedro.casadocodigo.config.validator.EmailUnico;
+import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoUnico;
 import br.com.zupacademy.pedro.casadocodigo.model.Autor;
 import br.com.zupacademy.pedro.casadocodigo.repository.AutorRepository;
 import org.hibernate.validator.constraints.Length;
@@ -17,7 +17,7 @@ public class AutorDTORequest {
     @NotNull
     @NotBlank
     @Email
-    @EmailUnico
+    @CampoUnico(field = "email", table = Autor.class)
     private String email;
     @NotNull
     @NotBlank

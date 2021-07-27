@@ -1,6 +1,7 @@
 package br.com.zupacademy.pedro.casadocodigo.config.handler;
 
 
+import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,6 @@ public class ErroHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<ErroDeCadastro> handle(MethodArgumentNotValidException exception) {
         List<ErroDeCadastro> dto = new ArrayList<>();
-        System.out.println("PASSOU AQUI");
 
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
         fieldErrors.forEach(e -> {

@@ -1,6 +1,6 @@
 package br.com.zupacademy.pedro.casadocodigo.model;
 
-import br.com.zupacademy.pedro.casadocodigo.config.validator.EmailUnico;
+import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoUnico;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -20,7 +20,6 @@ public class Autor {
     private String nome;
     @NotNull
     @Email
-    @EmailUnico
     private String email;
     @NotNull
     @NotBlank
@@ -28,6 +27,8 @@ public class Autor {
     private String descricao;
     private LocalDateTime momentoCriacao = LocalDateTime.now();
 
+    @Deprecated
+    public Autor() { }
     public Autor(String nome, String email, String descricao) {
         this.nome = nome;
         this.email = email;
