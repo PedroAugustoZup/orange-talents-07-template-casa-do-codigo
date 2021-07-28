@@ -1,9 +1,9 @@
 package br.com.zupacademy.pedro.casadocodigo.dto.request;
 
 import br.com.zupacademy.pedro.casadocodigo.config.exception.EstadoInvalidoException;
-import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoExistente;
-import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoUnico;
-import br.com.zupacademy.pedro.casadocodigo.config.validator.CpfCnpj;
+import br.com.zupacademy.pedro.casadocodigo.config.validator.bean.CampoExistente;
+import br.com.zupacademy.pedro.casadocodigo.config.validator.bean.CampoUnico;
+import br.com.zupacademy.pedro.casadocodigo.config.validator.bean.CpfCnpj;
 import br.com.zupacademy.pedro.casadocodigo.model.Cliente;
 import br.com.zupacademy.pedro.casadocodigo.model.Estado;
 import br.com.zupacademy.pedro.casadocodigo.model.Pais;
@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 public class ClienteDTORequest {
     @NotBlank
@@ -118,5 +119,9 @@ public class ClienteDTORequest {
             return cliente;
         }
         throw new EstadoInvalidoException("Estado inválido");
+    }
+
+    public boolean temEstado() {
+        return Optional.ofNullable(estado).isPresent();
     }
 }

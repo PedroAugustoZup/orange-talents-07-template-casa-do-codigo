@@ -1,9 +1,7 @@
 package br.com.zupacademy.pedro.casadocodigo.dto.request;
 
-import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoUnico;
+import br.com.zupacademy.pedro.casadocodigo.config.validator.bean.CampoUnico;
 import br.com.zupacademy.pedro.casadocodigo.model.Autor;
-import br.com.zupacademy.pedro.casadocodigo.repository.AutorRepository;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

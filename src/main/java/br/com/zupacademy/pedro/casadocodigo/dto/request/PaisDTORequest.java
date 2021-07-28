@@ -1,6 +1,6 @@
 package br.com.zupacademy.pedro.casadocodigo.dto.request;
 
-import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoUnico;
+import br.com.zupacademy.pedro.casadocodigo.config.validator.bean.CampoUnico;
 import br.com.zupacademy.pedro.casadocodigo.model.Pais;
 
 import javax.validation.constraints.NotBlank;

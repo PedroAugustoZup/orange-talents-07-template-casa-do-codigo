@@ -1,6 +1,5 @@
 package br.com.zupacademy.pedro.casadocodigo.model;
 
-import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoUnico;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

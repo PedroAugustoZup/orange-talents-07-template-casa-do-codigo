@@ -32,7 +32,6 @@ public class ErroHandler {
             ErroDeCadastro erro = new ErroDeCadastro(e.getField(), mensagem);
             dto.add(erro);
         });
-
         return dto;
     }
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)

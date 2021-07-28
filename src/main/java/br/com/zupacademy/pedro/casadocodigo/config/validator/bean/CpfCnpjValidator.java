@@ -1,4 +1,4 @@
-package br.com.zupacademy.pedro.casadocodigo.config.validator;
+package br.com.zupacademy.pedro.casadocodigo.config.validator.bean;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
