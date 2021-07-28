@@ -1,7 +1,7 @@
 package br.com.zupacademy.pedro.casadocodigo.config.handler;
 
 
-import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
+import br.com.zupacademy.pedro.casadocodigo.config.exception.EstadoInvalidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.validation.ConstraintViolationException;
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +36,8 @@ public class ErroHandler {
         return dto;
     }
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public String handle(IllegalArgumentException exception){
-        return exception.getMessage();
+    @ExceptionHandler(EstadoInvalidoException.class)
+    public ErroDeCadastro handle(EstadoInvalidoException exception){
+        return new ErroDeCadastro("estado", exception.getMessage());
     }
 }

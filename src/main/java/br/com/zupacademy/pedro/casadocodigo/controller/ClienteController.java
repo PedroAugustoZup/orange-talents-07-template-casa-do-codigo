@@ -3,7 +3,6 @@ package br.com.zupacademy.pedro.casadocodigo.controller;
 import br.com.zupacademy.pedro.casadocodigo.dto.request.ClienteDTORequest;
 import br.com.zupacademy.pedro.casadocodigo.model.Cliente;
 import br.com.zupacademy.pedro.casadocodigo.repository.ClienteRepository;
-import br.com.zupacademy.pedro.casadocodigo.repository.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +21,6 @@ public class ClienteController {
 
     @PersistenceContext
     private EntityManager manager;
-
-    @Autowired
-    private EstadoRepository estadoRepository;
 
     @Autowired
     private ClienteRepository clienteRepository;

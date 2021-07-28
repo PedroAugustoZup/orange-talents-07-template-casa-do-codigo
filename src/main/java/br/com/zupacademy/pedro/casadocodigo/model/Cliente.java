@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Optional;
 
 @Entity
 @Table(name = "tb_cliente")
@@ -65,7 +64,7 @@ public class Cliente {
         this.endereco = endereco;
         this.complemento = complemento;
         this.cidade = cidade;
-        this.pais = pais;
+        this.pais = paisFind;
         this.telefone = telefone;
         this.cep = cep;
         this.estado = estado;
@@ -118,4 +117,10 @@ public class Cliente {
     public String getCep() {
         return cep;
     }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+
 }

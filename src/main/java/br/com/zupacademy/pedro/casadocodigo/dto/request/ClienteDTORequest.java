@@ -1,23 +1,17 @@
 package br.com.zupacademy.pedro.casadocodigo.dto.request;
 
+import br.com.zupacademy.pedro.casadocodigo.config.exception.EstadoInvalidoException;
 import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoExistente;
 import br.com.zupacademy.pedro.casadocodigo.config.validator.CampoUnico;
 import br.com.zupacademy.pedro.casadocodigo.config.validator.CpfCnpj;
 import br.com.zupacademy.pedro.casadocodigo.model.Cliente;
 import br.com.zupacademy.pedro.casadocodigo.model.Estado;
 import br.com.zupacademy.pedro.casadocodigo.model.Pais;
-import br.com.zupacademy.pedro.casadocodigo.repository.EstadoRepository;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.security.InvalidParameterException;
-import java.util.List;
-import java.util.Optional;
 
 public class ClienteDTORequest {
     @NotBlank
@@ -41,6 +35,7 @@ public class ClienteDTORequest {
     @NotNull
     @CampoExistente(table = Pais.class, field = "id")
     private Integer pais;
+    @CampoExistente(table = Estado.class, field = "id")
     private Integer estado;
     @NotBlank
     private String telefone;
@@ -112,13 +107,16 @@ public class ClienteDTORequest {
 
     public Cliente toModel(EntityManager manager) {
         Pais paisFind = manager.find(Pais.class, this.pais);
-        if(this.estado != null){
-            Estado estado = manager.find(Estado.class, this.estado);
-            if(estado.isValid(paisFind)) {
-                return new Cliente(this.nome,this.sobrenome, this.email, this.documento, this.endereco, this.complemento,
-                        this.cidade, paisFind, estado, this.telefone, this.cep);
-            }
+        Cliente cliente = new Cliente(this.nome, this.sobrenome, this.email, this.documento, this.endereco, this.complemento,
+                this.cidade, paisFind, this.telefone, this.cep);
+        if(this.estado == null){
+            return cliente;
         }
-        throw new IllegalArgumentException("Estado inválido");
+        Estado estado = manager.find(Estado.class, this.estado);
+        if(estado.pertenceAPais(paisFind)){
+            cliente.setEstado(estado);
+            return cliente;
+        }
+        throw new EstadoInvalidoException("Estado inválido");
     }
 }

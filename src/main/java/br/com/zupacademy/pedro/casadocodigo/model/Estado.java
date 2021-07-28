@@ -44,4 +44,8 @@ public class Estado {
     public boolean isValid(Pais paisFind) {
         return this.pais.equals(paisFind);
     }
+
+    public boolean pertenceAPais(Pais pais) {
+        return this.pais.equals(pais);
+    }
 }
